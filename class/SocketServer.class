@@ -1,0 +1,18 @@
+## module SocketServer ##
+
+class SocketServer
+	@start: (server, store) ->
+		@io = require('socket.io').listen server
+		@io.configure =>
+			@io.set 'store', store
+
+		this
+
+	@bindSocket: ->
+		@io.on 'connection', @publisher
+
+	@publisher: (socket) ->
+		
+
+
+module.exports = SocketServer
