@@ -2,6 +2,7 @@
 
 Logger = Import 'helpers.LoggerHelper$cs'
 _ = require 'underscore'
+path = require 'path'
 
 class LoadBalancer
 	cluster: require 'cluster'
@@ -15,7 +16,7 @@ class LoadBalancer
 	restarts: 0
 	register: {}
 
-	constructor: (@config) ->
+	constructor: (@config, @args) ->
 
 	startBalancer: ->
 		Logger.log "@LoadBalancer: Starting Balancer"
@@ -40,8 +41,9 @@ class LoadBalancer
 
 	setupCluster: ->
 		@cluster.setupMaster
-			exec: 'src/system.js'
+			exec: path.normalize __dirname + '../../../class/app.js'
 			silent: false
+			args: @args
 
 	forkProcess: ->
 		processes = @config.workers_per_core * @cpus

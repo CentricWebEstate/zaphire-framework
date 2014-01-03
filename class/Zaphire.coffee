@@ -6,13 +6,12 @@ class Zaphire
 		ImportHelper = require '../helpers/ImportHelper'
 		ImportHelper.register '.', path.resolve __dirname, '../'
 
-
 	start: ->
 		Importer.addLocation @root
 		config = Import @config
 		LoadBalancer = Import 'class.LoadBalancer$cs'
-		LoadBalancer = new LoadBalancer config
-		Logger = require 'helpers.LoggerHelper$cs'
+		LoadBalancer = new LoadBalancer config, [@root]
+		Logger = Import 'helpers.LoggerHelper$cs'
 		fs = require 'fs'
 
 		fs.writeFileSync(config.pidfile, process.pid) if process.env.LOCATION isnt 'development'
@@ -35,6 +34,9 @@ class Zaphire
 			process.exit 0
 
 	getApp: ->
-		Import 'class.Application$cs'
+		Importer.addLocation @root
+		App = Import 'class.Application$cs'
+		App.root = @root
+		App
 
 module.exports = new Zaphire()

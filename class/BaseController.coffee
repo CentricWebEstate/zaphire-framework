@@ -2,7 +2,7 @@ class Controller
 	_redirecting: false
 
 	constructor: (@request, @response, view, layout) ->
-		View = Import 'lib.class.View$cs'
+		View = Import 'class.View$cs'
 		@view = new View view, @response
 		@view.setLayout layout
 

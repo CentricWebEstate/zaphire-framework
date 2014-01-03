@@ -1,7 +1,7 @@
 
 
 class Config
-	@config: require('ini').parse (require('fs').readFileSync 'src/config/general.ini').toString()
+	@config: require('ini').parse (require('fs').readFileSync 'configs/general.ini').toString()
 	
 	@get: (config) =>
 		if @overide[config] then return @overide[config]()

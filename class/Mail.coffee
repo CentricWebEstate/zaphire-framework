@@ -1,10 +1,10 @@
 ## @module mail ##
 
 nodemailer = require 'nodemailer'
-Logger = Import 'helper.LoggerHelper$cs'
+Logger = Import 'helpers.LoggerHelper$cs'
 
 class Mail
-	config: Import 'config.mail$ini'
+	config: Import 'configs.mail$ini'
 	mailOptions: {}
 	
 	constructor: ->

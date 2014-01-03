@@ -1,6 +1,6 @@
 ## modules RouterClass ##
 
-Logger = require '../helper/LoggerHelper'
+Logger = Import 'helpers.LoggerHelper$cs'
 
 class Router
 

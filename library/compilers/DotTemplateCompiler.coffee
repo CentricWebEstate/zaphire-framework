@@ -1,7 +1,7 @@
 ## @module DotTemplateHelper ##
 
 _ = require 'underscore'
-Config = require '../class/Config'
+Config = require '../../class/Config'
 
 class DotTemplate
 	@dot: require 'dot'
