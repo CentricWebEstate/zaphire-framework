@@ -68,7 +68,7 @@ class Router
 			controller = new Controller serverObj.req, serverObj.res, View, Layout
 			if controller?[routeObj.action]
 				controller.error = routeObj.error if typeof routeObj.error isnt 'undefined'
-				controller.beforeLoad?()
+				controller.beforeAction?()
 				controller[routeObj.action]()
 				controller.beforeRender?()
 				controller.render()
