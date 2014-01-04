@@ -25,12 +25,12 @@ class Zaphire
 
 		process.on 'SIGINT', ->
 			Logger.notice "##{process.pid} Application is terminating forcefully."
-			fs.rmdirSync(config.pidfile) if process.env.LOCATION isnt 'development'
+			fs.unlinkSync(config.pidfile) if process.env.LOCATION isnt 'development'
 			process.exit 0
 
 		process.on 'SIGTERM', ->
 			Logger.notice "##{process.pid} Application is terminating forcefully."
-			fs.rmdirSync(config.pidfile) if process.env.LOCATION isnt 'development'
+			fs.unlinkSync(config.pidfile) if process.env.LOCATION isnt 'development'
 			process.exit 0
 
 	getApp: ->
