@@ -1,7 +1,7 @@
 {
   "name": "zaphire-framework",
   "author": "Centric Web Estate",
-  "version": "0.0.1-alpha",
+  "version": "0.0.2-alpha",
   "description": "",
   "dependencies": {
     "coffee-script-redux": "2.0.0-beta7",
