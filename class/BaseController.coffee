@@ -6,7 +6,7 @@ class Controller
 		@view = new View view, @response
 		@view.setLayout layout
 
-	beforeLoad: ->
+	beforeAction: ->
 
 	beforeRender: ->
 
