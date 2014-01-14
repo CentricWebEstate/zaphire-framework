@@ -59,7 +59,7 @@ class Router
 
 	runRoute: (routeObj, serverObj) ->
 		Controller = @loadController routeObj.controller
-		View = "#{@config.defaults.location.views}.#{routeObj.view}$#{@config.defaults.viewextension}"
+		View = "#{routeObj.viewsFolder}.#{routeObj.view}$#{@config.defaults.viewextension}"
 		Layout = "#{@config.defaults.location.layouts}.#{routeObj.layout}$#{@config.defaults.viewextension}"
 
 		if Controller is false then return @errorHandler 404, routeObj, serverObj
@@ -94,6 +94,7 @@ class Router
 			action: action
 			view: view
 			layout: 'main'
+			viewsFolder: @config.defaults.location.views
 
 		serverObj =
 			res: res
@@ -114,6 +115,7 @@ class Router
 				action: action
 				view: view
 				layout: req.params.layout || route.layout
+				viewsFolder: route.viewsFolder || @config.defaults.location.views
 
 			serverObj =
 				res: res
@@ -129,6 +131,7 @@ class Router
 			view: @config.errors[type].view
 			layout: @config.errors[type].layout
 			error: routeObj.error
+			viewsFolder: @config.errors[type].viewsFolder || @config.defaults.location.views
 
 		@runRoute newRouteObj, serverObj
 
