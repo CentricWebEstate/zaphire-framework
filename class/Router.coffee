@@ -69,7 +69,9 @@ class Router
 			if controller?[routeObj.action]
 				controller.error = routeObj.error if typeof routeObj.error isnt 'undefined'
 				controller.beforeAction?()
-				controller[routeObj.action]()
+				if routeObj.dependant?
+					controller[routeObj.dependant] routeObj.action
+				else controller[routeObj.action]()
 				controller.beforeRender?()
 				controller.render()
 			else
@@ -108,6 +110,7 @@ class Router
 			controller = req.params.controller || route.controller
 			action = req.params.action || route.action
 			view = req.params.view || route.view
+			middleware = route.dependant || null
 			if not route.layout? then route.layout = 'main'
 
 			routeObj =
@@ -116,6 +119,7 @@ class Router
 				view: view
 				layout: req.params.layout || route.layout
 				viewsFolder: route.viewsFolder || @config.defaults.location.views
+				dependant: middleware
 
 			serverObj =
 				res: res
