@@ -17,6 +17,8 @@ class Auth
 			name: name
 
 		@db.users.update update, document, {upsert:true}, (err, success) ->
-			Logger.warn "@Auth: Failed to save user." if err or not success
+			if err or not success
+				Logger.warn "@Auth: Failed to save user."
+				console.log err
 
 module.exports = Auth
