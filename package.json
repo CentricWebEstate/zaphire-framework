@@ -1,7 +1,7 @@
 {
   "name": "zaphire-framework",
   "author": "Centric Web Estate",
-  "version": "0.0.5-eded699",
+  "version": "0.0.6-eded699",
   "description": "",
   "dependencies": {
     "coffee-script": "latest",
@@ -13,7 +13,8 @@
     "ini": "~1.1.0",
     "express.io": "~1.1.13",
     "mongojs": "~0.9.9",
-    "nodemailer": "~0.5.14"
+    "nodemailer": "~0.5.14",
+    "keen.io" : "latest"
   },
   "dev-dependencies": {
     "coffee-script-redux": "2.0.0-beta7"
