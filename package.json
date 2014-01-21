@@ -1,7 +1,7 @@
 {
   "name": "zaphire-framework",
   "author": "Centric Web Estate",
-  "version": "0.0.7-e730514",
+  "version": "0.0.8-a423a7d-debug",
   "description": "",
   "dependencies": {
     "coffee-script": "latest",
